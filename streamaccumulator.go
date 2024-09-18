@@ -110,6 +110,7 @@ func (cc *ChatCompletion) accumulateDelta(chunk ChatCompletionChunk) bool {
 		choice.Index = delta.Index
 		choice.FinishReason = ChatCompletionChoicesFinishReason(delta.FinishReason)
 
+        choice.Message.Role += ChatCompletionMessageRole(delta.Delta.Role)
 		choice.Message.Content += delta.Delta.Content
 		choice.Message.Refusal += delta.Delta.Refusal
 
