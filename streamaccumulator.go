@@ -119,8 +119,8 @@ func (cc *ChatCompletion) accumulateDelta(chunk ChatCompletionChunk) bool {
 			choice.Message.ToolCalls = expandToFit(choice.Message.ToolCalls, int(deltaTool.Index))
 			tool := &choice.Message.ToolCalls[deltaTool.Index]
 
-			tool.ID = deltaTool.ID
-			tool.Type = ChatCompletionMessageToolCallType(deltaTool.Type)
+			tool.ID += deltaTool.ID
+			tool.Type += ChatCompletionMessageToolCallType(deltaTool.Type)
 			tool.Function.Name += deltaTool.Function.Name
 			tool.Function.Arguments += deltaTool.Function.Arguments
 		}
